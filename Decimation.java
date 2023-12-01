@@ -1,19 +1,37 @@
-package trainingOnCiphers.lec5_substitutionMethods;
+/**
+ * The Decimation Cipher is a type of monoalphabetic substitution cipher.
+ * In this cipher, each letter in the plaintext is replaced by a letter that is a fixed number of positions away
+ * in the alphabet, following a multiplication-based encryption scheme.
+ *
+ * Encryption: E_k(x) = (x * k) mod n
+ * Decryption: D_k(y) = (y * k^(-1)) mod n, where k^(-1) is the modular multiplicative inverse of k modulo n.
+ *
+ * Pros:
+ * - Simple and easy to implement.
+ * - Provides a basic level of confidentiality for messages.
+ *
+ * Cons:
+ * - Vulnerable to frequency analysis since it preserves the underlying frequencies of the plaintext.
+ * - Limited key space, making it susceptible to brute-force attacks.
+ *
+ * From a cryptanalyst's point of view:
+ * - Decimation cipher can be quickly broken using statistical analysis, especially for longer texts.
+ * - Knowledge of the key's structure (multiplicative factor) simplifies decryption efforts.
+ * - The use of a small key space makes it vulnerable to exhaustive search attacks.
+ */
 
 import java.util.Scanner;
 
 public class Decimation {
-
+	
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 
 		System.out.println("Enter The string to encrypt: ");
-//		String plainText = in.nextLine();
-		String plainText = "Hello from the other side babe!";
+		String plainText = in.nextLine();
 
 		System.out.println("Enter the key (Coprime of 26): ");
-		int key = 25;
-//		int key = in.nextInt();
+		int key = in.nextInt();
 
 		String cipherText = encrypt(plainText, key);
 		System.out.println("Encrypted Text: " + cipherText);
